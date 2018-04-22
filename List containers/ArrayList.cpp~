@@ -1,0 +1,132 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+class ArrayList{
+
+public:
+int rozmiar = 1000;
+int array[rozmiar];
+
+void push_front(int x){
+   for(int i = sizeof(array); i > 0; i--){
+      array[i] = array[i-1];
+   }
+   array[0] = x;
+}
+
+int pop_front(){
+   if(array[0] == 0){ 
+      return -1;
+   } else {
+      int temp = array[0];
+      for(int i = sizeof(array); i > 0; i--){
+         array[i-1] = array[i];
+      }
+      return temp;
+   }
+}
+
+void push_back(int x){
+   int temp;
+   for(int i = 0; i < sizeof(array); i++){
+      if(i == 0) array[i] = x;
+   }
+}
+
+int pop_back(){
+   int temp;
+   if(array[0] == 0){ 
+      return -1;
+   } else {
+      for(int i = sizeof(array); i > 0; i--){
+         if(array[i] != 0){
+            temp = array[i];
+            array[i] = 0;
+            break;
+         }
+      }
+   return temp;
+   }
+}
+
+int* find(int x){
+   int *f = new int[sizeof(array)];
+   for(int j = 0; j < sizeof(array); j++){
+      if(array[j] == x){
+         *f = array[j];
+          return f;
+      } else {
+         return nullptr;
+      }
+   }
+}
+
+int size(){
+   int j = 0;
+   while(array[j] != 0){
+      j++;
+   }
+return j;
+}
+};
+
+int main(int argc, char *argv[]){
+
+   string cin_input;
+   stringstream stream;
+   int count;
+   cin >> count;
+  // int tablica[count] = {}; // = {} w domu dziala
+   ArrayList lista;
+   lista.array[] = {};
+  // cout << endl << "Ilosc instrukcji = " << count << "\n\n";
+   getline(cin, cin_input); 
+   stream << cin_input; 
+   stream.clear(); 
+
+   //tablica[count] = {};     
+
+   while(getline(cin, cin_input)){  
+      stream << cin_input;
+      char x;
+      int n;
+      stream >> x;
+      stream >> n;
+      stream.clear();
+      if(x == 'A'){
+         lista.push_front(n);
+         cout << x << " " << n << "   Dodane do tablicy\n";
+
+
+      } else if(x == 'F'){
+         cout << x << " " << n;
+           if(lista.find(n) != nullptr){
+              cout << "   TRUE\n";
+           } else {
+              cout << "   FALSE\n";
+           }
+
+
+      } else if(x == 'D'){
+         cout << x << "    ";
+         int z = lista.pop_front();
+         if (z == -1){ 
+            cout << "    EMPTY\n";
+         } else {
+            cout << "    Usunieto = " << z << "\n";
+         }
+
+
+      } else {
+         cout << x << "        Rozmiar = " << lista.size() << "\n";
+      }
+      n = 0;
+   }
+   cout << "\n\n\n";
+   for(int i = 0; i < count; i++){ cout << lista.array[i] << "\n"; }
+
+return 0;
+}

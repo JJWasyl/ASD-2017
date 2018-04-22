@@ -1,0 +1,24 @@
+.PHONY: genSquare closePoint genRandomPerm permCount genMatrix matrixRect leader sumSearch sepLine maxSeg
+
+CXXFLAGS = -std=c++11 -O2
+CXX = g++
+
+genSquare: genSquare.x
+closePoint: closePoint.x
+genRandomPerm: genRandomPerm.x
+permCount: permCount.x
+genMatrix: genMatrix.x
+matrixRect: matrixRect.x
+leader: leader.x
+sumSearch: sumSearch.x
+sepLine: sepLine.x
+maxSeg: maxSeg.x
+
+all: genSquare closePoint genRandomPerm permCount genMatrix matrixRect leader sumSearch sepLine maxSeg
+
+clean:
+	rm *.x
+
+%.x: %.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $^
+

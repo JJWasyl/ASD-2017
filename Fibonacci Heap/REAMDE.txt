@@ -1,0 +1,76 @@
+********************************
+      KOPIEC FIBONACCIEGO
+********************************
+
+I. Uzytkowanie
+======================================================================================
+
+Program oferuje 7 funkcji
+	1. Dodanie liczby do kopca
+	2. Usuniecie wezla o najmniejszym kluczu
+	3. Wyswietlenie korzeni wszystkich drzew w kopcu
+           -Nalezy pamietac, ze kazda operacja usuwania zmienia strukture kopca
+	4. Wyswietlenie rozmiaru kopca
+	5. Zmniejszenie wartosci klucza
+	6. Usuniecie klucza z kopca
+	7. Wyswietlenie najmniejszego elementu w kopcu
+
+
+II. Informacje dodatkowe
+======================================================================================
+
+Funkcje minimumNode() oraz consolidate sa oznakowane krokami ponizszych algorytmow:
+
+a. minimumNode().
+*
+   * minimumNode()
+   * 1. z = H
+   * 2. if z != NULL
+   * 3. 	for each child x of z
+   * 4. 		add x to the root list of H
+   * 5. 		x.p = NULL
+   * 6. 	remove z from the root list of H
+   * 7.		if z == z.right
+   * 8. 		H = NULL
+   * 9. 	else H = z.right
+   *10. 		CONSOLIDATE()
+   *11. 	nH = nH - 1
+   *12. return z
+*
+
+*
+   * consolidate()
+   * 1. let A[0 . . D(nH)] be a new array
+   * 2. for i = 0 to D(nH)
+   * 3. 	A[i] = NULL
+   * 4. for each node w in the root list of H
+   * 5. 	x = w
+   * 6. 	d = x.degree
+   * 7. 	while A[d] != NULL
+   * 8. 		y = A[d]
+   * 9. 		if x.key > y.key
+   *10.			exchange x with y
+   *11. 		FIB-HEAP-LINK(y,x)
+   *12. 		A[d] = NULL
+   *13. 		d = d + 1
+   *14. 	A[d] = x
+   *15. H = NULL
+   *16. for i = 0 to D(H.n)
+   *17. 	if A[i] != NULL
+   *18. 		if H == N
+   *19. 			create a root list for H containing just A[i]
+   *20. 			H = A[i]
+   *21. 		else insert A[i] into H's root list
+   *22. 			if A[i].key < H.key
+   *23. 				H = A[i]
+*
+
+
+Source: 
+https://www.cs.princeton.edu/~wayne/teaching/fibonacci-heap.pdf
+http://www.cs.princeton.edu/~wayne/kleinberg-tardos/pdf/FibonacciHeaps.pdf
+https://en.wikipedia.org/wiki/Fibonacci_heap
+http://bioinfo.ict.ac.cn/~dbu/AlgorithmCourses/Lectures/Fibonacci-Heap-Tarjan.pdf
+http://www.cs.yorku.ca/~aaw/Jason/FibonacciHeapAlgorithm.html
+http://www.cs.yorku.ca/~aaw/Jason/FibonacciHeapAnimation.html (Porownanie funkcjonalnosci)
+

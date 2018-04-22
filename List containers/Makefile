@@ -1,0 +1,17 @@
+.PHONY: genList ArrayList CursorList SingleList LinkedList stdList
+
+CXXFLAGS = -std=c++11 -O2
+CXX = g++
+
+genList: genList.x
+ArrayList: ArrayList.x
+CursorList: CursorList.x
+SingleList: SingleList.x
+LinkedList: LinkedList.x
+stdList: stdList.x
+
+all: genList ArrayList CursorList SingleList LinkedList stdList
+
+%.x: %.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
